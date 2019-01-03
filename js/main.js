@@ -84,10 +84,10 @@
                 headerH = header.clientHeight,
                 titles = d.getElementById('post-content').querySelectorAll('h1, h2, h3, h4, h5, h6');
 
-            toc.querySelector('a[href="#' + titles[0].id + '"]').parentNode.classList.add('active');  
+            toc.querySelector('a[href="#' + titles[0].id + '"]').parentNode.classList.add('active');
 
             [].forEach.call(toc.querySelectorAll('a[href*="#"]'), function(el){
-                
+
                 el.addEventListener('click', function(e){
                     e.preventDefault();
                     docEl.scrollTop = offset(d.querySelector('[id="'+ decodeURIComponent(this.hash).substr(1) +'"]')).y - headerH + 10;
@@ -108,12 +108,12 @@
                         } else {
                             toc.scrollTop = 0;
                         }
-                    } 
+                    }
                 }
 
                 if(top < offset(titles[0]).y) {
                     toc.querySelector('li.active').classList.remove('active');
-                    toc.querySelector('a[href="#' + titles[0].id + '"]').parentNode.classList.add('active');  
+                    toc.querySelector('a[href="#' + titles[0].id + '"]').parentNode.classList.add('active');
                 }
             }
 
@@ -122,7 +122,7 @@
                     toc.classList.add('fixed');
                 } else {
                     toc.classList.remove('fixed');
-                    
+
                 }
 
                 setActive(top);
@@ -196,7 +196,7 @@
                 setTimeout(function(){
                     reward.classList.add('in');
                     d.addEventListener(even, hideByBody);
-                }, 0) 
+                }, 0)
             }
 
             function hide(){
@@ -224,7 +224,7 @@
             var nav = d.querySelector('.nav');
 
             function calcH() {
-                nav.style.minHeight =  (nav.parentNode.clientHeight - nav.nextElementSibling.offsetHeight) + 'px';
+                nav.style.minHeight =  (nav.parentNode.clientHeight) + 'px';
             }
 
             return calcH;
