@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南京市玄武区比特喵软件研发中心 - 春闺犹梦</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: #1a1a2e;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.coze.cn/s/z8HItvpLxk4/?width_height=3600x3316') center/cover no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(26, 26, 46, 0.7) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 700px;
+            padding: 2rem;
+        }
+
+        .studio-name {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            color: #1a1a2e;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* 游戏展示区 */
+        .game-section {
+            padding: 4rem 5%;
+            background: #1a1a2e;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title p {
+            color: #888888;
+            font-size: 1rem;
+        }
+
+        .game-showcase {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .game-info {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .game-info h3 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .game-info .subtitle {
+            font-size: 1.1rem;
+            color: #ffd700;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-info p {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .game-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .game-screenshot {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .game-screenshot:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .game-screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 关于工作室 */
+        .about-section {
+            padding: 4rem 5%;
+            background: #151530;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* 页脚 */
+        footer {
+            background: #0f0f25;
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer p {
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        footer p span {
+            color: #ffd700;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .game-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">
+            <span>🎮</span>
+            <span>比特喵软件</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#game">春闺犹梦</a></li>
+            <li><a href="#about">关于</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="studio-name">南京市玄武区比特喵软件研发中心</div>
+            <h1>春闺犹梦</h1>
+            <p>沉浸式策略对战体验，低多边形美学呈现</p>
+            <a href="#game" class="btn btn-primary">探索游戏</a>
+        </div>
+    </section>
+
+    <!-- 游戏展示 -->
+    <section class="game-section" id="game">
+        <div class="section-title">
+            <h2>春闺犹梦</h2>
+            <p>春闺犹梦，策略对战，智谋决胜</p>
+        </div>
+
+        <div class="game-showcase">
+            <div class="game-info">
+                <h3>春闺犹梦</h3>
+                <p class="subtitle">低多边形风格策略对战游戏</p>
+                <p>《春闺犹梦》是一款采用低多边形美术风格的策略对战游戏，玩家需要在战场上指挥不同的兵种，通过精妙的战术布局和策略思考，击败对手，赢得胜利。游戏拥有简洁而精致的画面风格，紧张刺激的对战体验，以及丰富的策略深度。</p>
+            </div>
+
+            <div class="game-gallery">
+                <div class="game-screenshot">
+                    <img src="https://www.coze.cn/s/0US5J9CMTUA/?width_height=2400x1080" alt="春闺犹梦 - 激烈对战">
+                </div>
+                <div class="game-screenshot">
+                    <img src="https://www.coze.cn/s/0qcqJt8u2Rw/?width_height=2400x1080" alt="春闺犹梦 - 军队布阵">
+                </div>
+                <div class="game-screenshot">
+                    <img src="https://www.coze.cn/s/1A4cxG74Ll8/?width_height=2400x1080" alt="春闺犹梦 - 战役场景">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于工作室 -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <h2>关于我们</h2>
+            <p>南京市玄武区比特喵软件研发中心是一个专注于精品游戏开发的工作室。</p>
+            <p>我们热爱游戏，更热爱创造游戏。每一个作品都倾注了我们的心血与热情，希望能为玩家带来独特的游戏体验和欢乐。</p>
+            <p>《春闺犹梦》是我们的诚意之作，期待您的体验。</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2026 <span>南京市玄武区比特喵软件研发中心</span> 版权所有</p>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
