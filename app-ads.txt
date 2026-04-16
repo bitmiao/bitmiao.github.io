@@ -146,3 +146,4 @@ app-stock.com, 358747, RESELLER
 app-stock.com, 256917, RESELLER
 conversantmedia.com, 41024, RESELLER, 03113cd04947736d
 google.com, pub-9105437083260617, DIRECT, f08c47fec0942fa0
+google.com, pub-6434216520870227, DIRECT, f08c47fec0942fa0
